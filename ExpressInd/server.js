@@ -7,16 +7,23 @@ var Customer = require("./models/customers")
 var app = express()
 
 app.get("/", (req, res) => {
-  res.send("Hi bro")
+  res.send({
+    name: "kiki",
+    age: "30"
+  })
 })
 
-var kiran = new Customer({
-  firstName: "Kiran",
+var kiranfdsfs = new Customer({
+  firstName: "Kiranfdfdfs",
   lastName: "R",
   email: "kiran.example.com"
 })
 
-kiran
+app.post("/customer/create", (req, res) => {
+  res.status(200).send("all ok")
+})
+
+kiranfdsfs
   .save()
   .then(result => console.log(result))
   .catch(err => console.log(err))
