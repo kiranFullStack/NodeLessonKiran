@@ -5,16 +5,13 @@ var Schema = mongoose.Schema
 
 var CustomerSchema = new Schema({
   firstName: {
-    type: String,
-    required: true
+    type: String
   },
   lastName: {
-    type: String,
-    required: true
+    type: String
   },
   email: {
-    type: String,
-    required: true
+    type: String
   }
 })
 

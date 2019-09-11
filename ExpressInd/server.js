@@ -6,26 +6,16 @@ var db = require("./db/mongoose")
 var Customer = require("./models/customers")
 var app = express()
 
-app.get("/", (req, res) => {
-  res.send({
-    name: "kiki",
-    age: "30"
-  })
-})
-
-var kiranfdsfs = new Customer({
-  firstName: "Kiranfdfdfs",
-  lastName: "R",
-  email: "kiran.example.com"
-})
-
+app.use(bodyParser.json())
 app.post("/customer/create", (req, res) => {
-  res.status(200).send("all ok")
+  var john = new Customer(req.body)
+  john
+    .save()
+    .then(result => {
+      console.log(result)
+      res.send(result)
+    })
+    .catch(err => console.log(err))
 })
-
-kiranfdsfs
-  .save()
-  .then(result => console.log(result))
-  .catch(err => console.log(err))
 
 app.listen(3000, () => console.log("Running server😎............."))
